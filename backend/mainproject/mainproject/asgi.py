@@ -10,7 +10,9 @@ https://docs.djangoproject.com/en/5.2/howto/deployment/asgi/
 import os
 
 from django.core.asgi import get_asgi_application
+#settings_module='mainproject.deployment_settings' if 'RENDER_EXTERNAL_HOSTNAME' in os.environ else 'mainproject.settings'
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mainproject.settings')
 
 application = get_asgi_application()
+
