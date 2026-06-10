@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 from datetime import timedelta
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -122,11 +123,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT=BASE_DIR/'staticfiles'
+#STATIC_URL = 'static/'
+#STATIC_ROOT=BASE_DIR/'staticfiles'
 CORS_ALLOW_ALL_ORIGINS=True
-CORS_ALLOW_ALL_ORIGINS=["http://localhost:3000",
-                        "http://library-management-system-frontend.onrender.com"]
+#CORS_ALLOW_ALL_ORIGINS=["http://localhost:3000",
+#                        "http://library-management-system-frontend.onrender.com"]
 REST_FRAMEWORK={
     'DEFAULT_AUTHENTICATION_CLASSES':(
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -144,8 +145,11 @@ SIMPLE_JWT={
     'BLACKLIST_AFTER_ROTATION':True,
     'AUTH_HEADER_TYPES':('Bearer',),
 }
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+STATIC_ROOT=BASE_DIR/'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
+STATIC_URL='/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
