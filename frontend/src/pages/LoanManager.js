@@ -12,7 +12,8 @@ function LoanManager() {
   const fetchGlobalLoans = () => {
     
     const token = localStorage.getItem('token');
-    axios.get('http://127.0.0.1:8000/api/loan/', {
+    /*axios.get('http://127.0.0.1:8000/api/loan/',*/ 
+    axios.get('https://library-management-system-project-1.onrender.com/api/loan/',{
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(res => {
@@ -27,7 +28,8 @@ function LoanManager() {
 
   const handleReturnAsset = (loanId) => {
     const token = localStorage.getItem('token');
-    axios.post(`http://127.0.0.1:8000/api/loan/${loanId}/confirm_return/`, {}, {
+    /*axios.post(`http://127.0.0.1:8000/api/loan/${loanId}/confirm_return/`, {}, {*/
+    axios.post(`https://library-management-system-project-1.onrender.com/api/loan/${loanId}/confirm_return/`, {}, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(() => {

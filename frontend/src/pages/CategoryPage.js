@@ -8,8 +8,9 @@ function CategoryPage() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 useEffect(() => {
+      axios.get('https://library-management-system-project-1.onrender.com/api/category/')
     
-    axios.get('http://127.0.0.1:8000/api/category/')
+    /*axios.get('http://127.0.0.1:8000/api/category/')*/
      
     .then(response => {
       setCategories(response.data);

@@ -28,8 +28,10 @@ function BookManager() {
 
   const fetchData = async () => {
     try {
-      const booksRes = await axios.get('http://127.0.0.1:8000/api/book/');
-      const catsRes = await axios.get('http://127.0.0.1:8000/api/category/');
+      const booksRes = await axios.get('https://library-management-system-project-1.onrender.com/api/book/');
+      const catsRes = await axios.get('https://library-management-system-project-1.onrender.com/api/category/');
+      /*const booksRes = await axios.get('http://127.0.0.1:8000/api/book/');*/
+      /*const catsRes = await axios.get('http://127.0.0.1:8000/api/category/');*/
       setBooks(booksRes.data);
       setCategories(catsRes.data);
       setLoading(false);
@@ -55,8 +57,9 @@ function BookManager() {
     };
 
     if (editingBookId) {
+      axios.put(`https://library-management-system-project-1.onrender.com/api/book/${editingBookId}/`, bookPayload,apiConfig)
       
-      axios.put(`http://127.0.0.1:8000/api/book/${editingBookId}/`, bookPayload,apiConfig)
+      /*axios.put(`http://127.0.0.1:8000/api/book/${editingBookId}/`, bookPayload,apiConfig)*/
         .then(() => {
           alert("Book records updated successfully!");
           cancelEdit(); 
@@ -64,8 +67,9 @@ function BookManager() {
         })
         .catch(err => console.error("Could not update book details", err));
     } else {
+      axios.post('https://library-management-system-project-1.onrender.com/api/book/', bookPayload,apiConfig)
       
-      axios.post('http://127.0.0.1:8000/api/book/', bookPayload,apiConfig)
+     /* axios.post('http://127.0.0.1:8000/api/book/', bookPayload,apiConfig)*/
         .then(() => {
           alert("New book registered successfully!");
           cancelEdit(); 
@@ -97,7 +101,8 @@ function BookManager() {
   const handleDelete = async (bookId) => {
     if (window.confirm("Are you sure you want to permanently delete this book?")) {
       try {
-        await axios.delete(`http://127.0.0.1:8000/api/book/${bookId}/`,apiConfig);
+        await axios.delete(`https://library-management-system-project-1.onrender.com/api/book/${bookId}/`,apiConfig);
+        /*await axios.delete(`http://127.0.0.1:8000/api/book/${bookId}/`,apiConfig);*/
         alert("Book deleted successfully.");
         fetchData(); 
       } catch (err) {

@@ -8,7 +8,8 @@ function StudentDashboard() {
 
   const fetchStudentLoans = () => {
     const token = localStorage.getItem('token');
-    axios.get('http://127.0.0.1:8000/api/loan/my_loans/', {
+    /*axios.get('http://127.0.0.1:8000/api/loan/my_loans/', {*/
+    axios.get('https://library-management-system-project-1.onrender.com/api/loan/my_loans/', {
       headers: { 'Authorization': `Bearer ${token}` }
     })
     .then(response => {
@@ -29,7 +30,8 @@ function StudentDashboard() {
     const token = localStorage.getItem('token');
     setStatusMessage('Processing your return code...');
 
-    axios.put(`http://127.0.0.1:8000/api/loan/${loanId}/request_return/`, {}, {
+    /*axios.put(`http://127.0.0.1:8000/api/loan/${loanId}/request_return/`, {}, {*/
+    axios.put(`https://library-management-system-project-1.onrender.com/api/loan/${loanId}/request_return/`, {}, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
     .then(() => {

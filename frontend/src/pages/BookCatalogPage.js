@@ -12,7 +12,8 @@ function BookCatalogPage() {
 
   useEffect(() => {
     
-    axios.get(`http://127.0.0.1:8000/api/book/by_category/${categoryId}/`)
+    /*axios.get(`http://127.0.0.1:8000/api/book/by_category/${categoryId}/`)*/
+    axios.get(`https://library-management-system-project-1.onrender.com/api/book/by_category/${categoryId}/`)
      
     .then(response => {
       setBooks(response.data);
@@ -29,7 +30,8 @@ function BookCatalogPage() {
     setMessage('Processing your borrow request...');
 
     
-    axios.post('http://127.0.0.1:8000/api/loan/', { book_id: bookId }, {
+    /*axios.post('http://127.0.0.1:8000/api/loan/', { book_id: bookId }*/
+    axios.post('https://library-management-system-project-1.onrender.com/api/loan/', { book_id: bookId }, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
     .then(() => {
